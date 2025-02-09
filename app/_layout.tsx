@@ -15,6 +15,7 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    Mulish: require('../assets/fonts/Mulish-Italic-VariableFont_wght.ttf'),
   });
 
   useEffect(() => {

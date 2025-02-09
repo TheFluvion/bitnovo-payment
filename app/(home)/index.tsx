@@ -1,28 +1,43 @@
-import { StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { useRouter } from 'expo-router';
+import { COLORS, FONT, SIZE, WEIGHT } from '@/constants/Theme/Theme';
+import { HelloWave } from '@/components/HelloWave';
+import Button from '@/components/Button';
 
 export default function HomeScreen() {
   const router = useRouter();
 
   return (
-    <ParallaxScrollView>
-      <TouchableOpacity onPress={() => router.push('/(payments)')}>
-        <Text>Buenas!</Text>
-      </TouchableOpacity>
-    </ParallaxScrollView>
+    <View style={styles.container}>
+      <View style={styles.welcome}>
+        <Text style={styles.title}>WELCOME!</Text>
+        <HelloWave />
+      </View>
+      <Button label="Generar pago" handlePress={() => router.push('/(payments)')} />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    gap: 8,
+    paddingVertical: 50,
+    paddingHorizontal: 20,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  welcome: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 10,
+  },
+  title: {
+    fontSize: SIZE.title,
+    fontWeight: 'bold',
+    fontFamily: FONT.mulish,
+    color: COLORS.primary,
   },
 });

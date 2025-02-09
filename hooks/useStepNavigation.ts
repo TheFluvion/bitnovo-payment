@@ -27,12 +27,16 @@ const useStepNavigation = ({
     setCurrentStep(flowSteps.length - 1);
   };
 
+  const handleCurrentStep = (step: number) => {
+    setCurrentStep(step);
+  }
+
   return {
     currentStep,
     goToNextStep,
     goBack,
     goFinalStep,
-    setCurrentStep,
+    handleCurrentStep,
   };
 };
 

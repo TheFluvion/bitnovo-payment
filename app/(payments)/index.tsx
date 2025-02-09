@@ -1,14 +1,7 @@
-import ParallaxScrollView from "@/components/ParallaxScrollView"
-import { Text, View } from "react-native"
+import Payments from "@/modules/Payments"
 
 const PaymentsScreen = () => {
-    return (
-        <ParallaxScrollView>
-            <Text>
-                Payments
-            </Text>
-        </ParallaxScrollView>
-    )
+    return (<Payments />)
 }
 
 export default PaymentsScreen
