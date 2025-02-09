@@ -16,6 +16,11 @@ interface Form {
     description: string;
 }
 
+interface ComponentsProps {
+    handleSelectCurrency: (currency: Currencies) => void;
+    form: Form;
+}
+
 const INITIAL_FORM: Form = {
     selected_currency: {
         symbol: "",
@@ -30,4 +35,4 @@ const INITIAL_FORM: Form = {
 }
 
 
-export { Currencies, Form, FormKeys, INITIAL_FORM }
+export { Currencies, Form, FormKeys, ComponentsProps, INITIAL_FORM }
