@@ -6,7 +6,7 @@ interface Props extends Currencies {
     handlePress: () => void;
     selected: boolean;
 }
-
+//change component name to OptionItem
 const Currency = ({
     image,
     name,

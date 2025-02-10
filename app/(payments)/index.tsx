@@ -1,7 +1,7 @@
 import Payments from "@/modules/Payments"
 
 const PaymentsScreen = () => {
-    return (<Payments />)
+    return <Payments />
 }
 
 export default PaymentsScreen

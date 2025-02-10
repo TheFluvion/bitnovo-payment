@@ -18,10 +18,11 @@ export const COLORS = {
 };
 
 export const SIZE = {
+    money: 40,
     title: 26,
     subtitle: 18,
     label: 14,
-    money: 40,
+    span: 12,
 }
 
 export const WEIGHT = {

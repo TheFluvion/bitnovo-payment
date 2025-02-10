@@ -3,6 +3,9 @@ import useCurrencies from "../../hooks/useCurrencies"
 import { ComponentsProps } from "../../constants/types"
 import Currency from "../../components/Currency"
 import styles from "./Currencies.styles"
+import CurrenciesSkeleton from "../../components/CurrenciesSkeleton"
+import Header from "../../components/Header"
+import CurrencySelect from "../../components/CurrencySelect"
 
 const Currencies = ({
     handleSelectCurrency,
@@ -12,10 +15,19 @@ const Currencies = ({
         handleSelectCurrency
     })
 
-    if (isLoading) return <Text>Loading...</Text>
+    if (isLoading) return <CurrenciesSkeleton />
 
     return (
         <View style={styles.container}>
+            <Header
+                showBackButton
+                title="Selecciona una divisa"
+                rightComponent={<CurrencySelect
+                    selectedCurrency={form.selected_currency}
+                    handlePress={() => { }}
+                />
+                }
+            />
             {currencies.map((currency) => (
                 <Currency
                     key={currency.blockchain}
