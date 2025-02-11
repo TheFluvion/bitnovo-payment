@@ -6,6 +6,7 @@ interface Props {
     showBackButton?: boolean;
     title?: string;
     rightComponent?: React.ReactNode;
+    hideBottomLine?: boolean;
 }
 
 const Header = ({
@@ -13,10 +14,11 @@ const Header = ({
     showBackButton,
     title,
     rightComponent,
+    hideBottomLine,
 }: Props) => {
     return (
         <View style={styles.container}>
-            <View style={styles.bottomLine} />
+            {!hideBottomLine && <View style={styles.bottomLine} />}
             {
                 showBackButton
                     ? <TouchableOpacity

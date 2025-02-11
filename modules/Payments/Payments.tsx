@@ -1,9 +1,7 @@
-import { Modal, View } from "react-native"
+import { View } from "react-native"
 import usePaymentsController from "./usePaymentsController"
 import createStyleSheet from "@/utils/CreateStyleSheet"
 import { COLORS } from "@/constants/Theme/Theme"
-import Currencies from "./Views/Currencies"
-import Button from "@/components/Button"
 import PaymentEntry from "./Views/PaymentEntry"
 
 const Payments = () => {

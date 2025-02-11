@@ -1,10 +1,10 @@
 import { View } from "react-native"
-import styles from "./CurrenciesSkeleton.styles"
+import styles from "./OptionItemListSkeleton.style"
 import Skeleton from "@/components/Skeleton"
 
 const SKELETONS_QUANTITY = 4
 
-const CurrenciesSkeleton = () => {
+const OptionItemListSkeleton = () => {
     const skeletonArray = Array.from({ length: SKELETONS_QUANTITY })
 
     return (
@@ -19,4 +19,4 @@ const CurrenciesSkeleton = () => {
 
 }
 
-export default CurrenciesSkeleton
+export default OptionItemListSkeleton

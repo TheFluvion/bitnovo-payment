@@ -1,10 +1,4 @@
-type CurrencyType = 'USD' | 'EUR' | 'GBP'
-
-const CURRENCY: Record<CurrencyType, CurrencyType> = {
-    USD: 'USD',
-    EUR: 'EUR',
-    GBP: 'GBP',
-}
+import { CURRENCY, CurrencyType } from "@/types/payment";
 
 interface Currencies {
     symbol: string;
@@ -43,4 +37,4 @@ const INITIAL_FORM: Form = {
 }
 
 
-export { Currencies, Form, FormKeys, ViewsProps, CurrencyType, INITIAL_FORM, CURRENCY }
+export { Currencies, Form, FormKeys, ViewsProps, CurrencyType, INITIAL_FORM }

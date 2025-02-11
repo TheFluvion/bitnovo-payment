@@ -1,13 +1,20 @@
-import { Modal, View } from "react-native";
+import { ImageSourcePropType, Modal, View } from "react-native";
 import styles from "./PaymentEntry.style";
-import Header from "../../components/Header";
+import Header from "../../../../components/Header";
 import CurrencySelect from "../../components/CurrencySelect";
 import { ViewsProps } from "../../constants/types";
 import InputNumber from "@/components/InputNumber";
 import { COLORS } from "@/constants/Theme/Theme";
 import InputText from "@/components/InputText";
 import Button from "@/components/Button";
-import Currencies from "../Currencies";
+import OptionItemList from "@/components/OptionItemList";
+import useCurrencies from "../../hooks/useCurrencies";
+
+const MOCKED_IMAGE_REQUIRED: Record<string, ImageSourcePropType> = {
+    USD: require("@/assets/images/icon-usa.png"),
+    EUR: require("@/assets/images/icon-euro.png"),
+    GBP: require("@/assets/images/icon-pound.png"),
+}
 
 const PaymentEntry = ({
     form,
@@ -18,6 +25,11 @@ const PaymentEntry = ({
     handleClose,
     handleContinue,
 }: ViewsProps) => {
+    const { filterCurrencies, isLoading, handleChangeCurrency, handleChangeSearchQuery } = useCurrencies({
+        handleSelectCurrency,
+        handleClose
+    })
+
     return (
         <View style={styles.container}>
             <Modal
@@ -25,13 +37,14 @@ const PaymentEntry = ({
                 animationType="slide"
                 transparent={false}
             >
-                <Currencies
-                    handleSelectCurrency={handleSelectCurrency}
-                    form={form}
-                    handleChangeFrom={handleChangeFrom}
-                    handleClose={handleClose}
-                    isOpen={isOpen}
-                    handleContinue={handleContinue}
+                <OptionItemList
+                    handleBackButton={handleClose}
+                    handleSelectOption={handleChangeCurrency}
+                    handleSearchChange={handleChangeSearchQuery}
+                    mockedImageRequired={MOCKED_IMAGE_REQUIRED}
+                    optionItemList={filterCurrencies}
+                    selectedOptionId={form.selected_currency.currency}
+                    isLoading={isLoading}
                 />
             </Modal>
             <Header

@@ -28,6 +28,7 @@ const usePaymentsController = () => {
             params: {
                 amount: form.amount,
                 description: form.description,
+                currency: form.selected_currency.currency,
             },
         });
     }

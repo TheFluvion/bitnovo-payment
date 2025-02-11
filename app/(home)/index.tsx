@@ -7,6 +7,17 @@ import Button from '@/components/Button';
 
 export default function HomeScreen() {
   const router = useRouter();
+  const handleCreatePayment = () => {
+    router.push('/(payments)')
+    /*  router.push({
+       pathname: '/(payments)/payment_request',
+       params: {
+         amount: 123,
+         description: 'daweasdasdasd',
+         currency: 'USD',
+       },
+     }); */
+  }
 
   return (
     <View style={styles.container}>
@@ -14,7 +25,7 @@ export default function HomeScreen() {
         <Text style={styles.title}>WELCOME!</Text>
         <HelloWave />
       </View>
-      <Button title="Generar pago" handlePress={() => router.push('/(payments)')} />
+      <Button title="Generar pago" handlePress={handleCreatePayment} />
     </View>
   );
 }

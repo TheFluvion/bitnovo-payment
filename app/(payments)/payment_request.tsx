@@ -1,11 +1,9 @@
-import { Text, View } from "react-native";
+import PaymentRequest from "@/modules/PaymentRequest";
 
-const PaymentRequest = () => {
+const PaymentRequestScreen = () => {
     return (
-        <View>
-            <Text>PaymentRequest</Text>
-        </View>
+        <PaymentRequest />
     )
 }
 
-export default PaymentRequest;
+export default PaymentRequestScreen;

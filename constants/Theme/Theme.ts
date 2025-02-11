@@ -13,6 +13,7 @@ export const COLORS = {
     enabled_text_color: '#035AC5',
     border_color: '#E5E9F2',
     shadow_background: '#EFF2F7',
+    shadow_color: '#000',
     white: '#FFFFFF',
     black: '#000000',
     transparent: 'transparent',
