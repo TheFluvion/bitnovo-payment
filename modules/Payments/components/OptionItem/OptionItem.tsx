@@ -1,18 +1,20 @@
-import { Image, Text, TouchableOpacity, View } from "react-native"
-import { Currencies } from "../../constants/types"
-import styles from "./Currency.styles"
+import { Image, ImageSourcePropType, Text, TouchableOpacity, View } from "react-native"
+import styles from "./OptionItem.styles"
 
-interface Props extends Currencies {
+interface Props {
     handlePress: () => void;
     selected: boolean;
+    name: string;
+    label: string;
+    image: ImageSourcePropType;
 }
-//change component name to OptionItem
-const Currency = ({
-    image,
+
+const OptionItem = ({
     name,
-    symbol,
-    handlePress,
+    label,
     selected,
+    image,
+    handlePress,
 }: Props) => {
     const tick = selected ? require("@/assets/images/icon-tick-circle.png") : require("@/assets/images/icon-arrow-right.png")
 
@@ -22,7 +24,7 @@ const Currency = ({
             style={styles.container}
         >
             <Image
-                source={{ uri: image }}
+                source={image}
                 width={720}
                 height={720}
                 style={styles.image}
@@ -32,7 +34,7 @@ const Currency = ({
                     {name}
                 </Text>
                 <Text style={styles.symbol}>
-                    {symbol}
+                    {label}
                 </Text>
             </View>
             <Image
@@ -45,4 +47,4 @@ const Currency = ({
     )
 }
 
-export default Currency
+export default OptionItem

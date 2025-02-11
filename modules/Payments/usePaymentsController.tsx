@@ -1,6 +1,7 @@
 import useStepNavigation from "@/hooks/useStepNavigation";
 import { useState } from "react";
 import { Currencies, Form, FormKeys, INITIAL_FORM } from "./constants/types";
+import useModal from "@/hooks/useModal";
 
 const usePaymentsController = () => {
     const [form, setForm] = useState<Form>(INITIAL_FORM);
@@ -8,6 +9,7 @@ const usePaymentsController = () => {
     const { currentStep, goBack, goFinalStep, goToNextStep, handleCurrentStep } = useStepNavigation({
         flowSteps: ["step1", "step2", "step3"]
     })
+    const { CustomModal, handleClose, handleOpen } = useModal()
 
     const handleChangeFrom = (key: FormKeys, value: number | string | Currencies) => {
         setForm({
@@ -28,6 +30,9 @@ const usePaymentsController = () => {
         currencies,
         handleSelectCurrency,
         handleChangeFrom,
+        CustomModal,
+        handleClose,
+        handleOpen,
     }
 }
 

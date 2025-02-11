@@ -3,10 +3,10 @@ import createStyleSheet from "@/utils/CreateStyleSheet";
 
 const styles = createStyleSheet({
     container: {
-        flex: 1,
         backgroundColor: COLORS.white,
         padding: 16,
         gap: 8,
+        width: "100%",
     },
     skeleton: {
         width: "100%",

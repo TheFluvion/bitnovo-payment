@@ -11,14 +11,13 @@ const CurrencySelect = ({
     selectedCurrency,
     handlePress
 }: Props) => {
-    const label = selectedCurrency.blockchain.split("_")[0];
     return (
         <TouchableOpacity
             style={styles.container}
             onPress={handlePress}
         >
             <Text style={styles.text}>
-                {label}
+                {selectedCurrency.currency}
             </Text>
             <Image
                 source={require("@/assets/images/icon-arrow-down.png")}

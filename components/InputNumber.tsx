@@ -2,12 +2,19 @@ import { COLORS, SIZE } from "@/constants/Theme/Theme"
 import createStyleSheet from "@/utils/CreateStyleSheet"
 import { Text, TextInput, TextInputProps, View } from "react-native"
 
+type Placeholder = {
+    text?: string
+    color: string
+}
+
 interface Props extends TextInputProps {
     currency?: string
+    customPlaceholder?: Placeholder
 }
 
 const InputNumber = ({
     currency,
+    customPlaceholder,
     ...props
 }: Props) => {
     return (
@@ -16,7 +23,8 @@ const InputNumber = ({
                 {...props}
                 style={[styles.input, props.value === '0' && styles.zero_value]}
                 keyboardType="numeric"
-                defaultValue="0.00"
+                placeholder={customPlaceholder?.text}
+                placeholderTextColor={customPlaceholder?.color || COLORS.disabled_text_color}
             />
             <Text style={[styles.currency, props.value === '0' && styles.zero_value]}>
                 {currency}

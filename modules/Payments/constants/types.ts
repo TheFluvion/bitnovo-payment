@@ -1,11 +1,16 @@
+type CurrencyType = 'USD' | 'EUR' | 'GBP'
+
+const CURRENCY: Record<CurrencyType, CurrencyType> = {
+    USD: 'USD',
+    EUR: 'EUR',
+    GBP: 'GBP',
+}
 
 interface Currencies {
     symbol: string;
     name: string;
-    min_amount: string;
-    max_amount: string;
     image: string;
-    blockchain: string;
+    currency: CurrencyType;
 }
 
 type FormKeys = "selected_currency" | "amount" | "description";
@@ -19,20 +24,19 @@ interface Form {
 interface ComponentsProps {
     handleSelectCurrency: (currency: Currencies) => void;
     form: Form;
+    handlePressBackButton?: () => void;
 }
 
 const INITIAL_FORM: Form = {
     selected_currency: {
         symbol: "",
         name: "",
-        min_amount: "",
-        max_amount: "",
         image: "",
-        blockchain: "",
+        currency: CURRENCY.USD,
     },
     amount: 0,
     description: "",
 }
 
 
-export { Currencies, Form, FormKeys, ComponentsProps, INITIAL_FORM }
+export { Currencies, Form, FormKeys, ComponentsProps, CurrencyType, INITIAL_FORM, CURRENCY }

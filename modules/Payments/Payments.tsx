@@ -3,25 +3,29 @@ import usePaymentsController from "./usePaymentsController"
 import createStyleSheet from "@/utils/CreateStyleSheet"
 import { COLORS } from "@/constants/Theme/Theme"
 import Currencies from "./Views/Currencies"
-import InputText from "@/components/InputText"
-import { useState } from "react"
-import InputNumber from "@/components/InputNumber"
+import Button from "@/components/Button"
 
 const Payments = () => {
-    const { form, handleSelectCurrency } = usePaymentsController()
-    const [text, setText] = useState("")
+    const {
+        form,
+        handleSelectCurrency,
+        CustomModal,
+        handleClose,
+        handleOpen
+    } = usePaymentsController()
 
     return (
         <View style={styles.container}>
-            <InputNumber
-                value={text}
-                onChangeText={setText}
-                currency="$"
-            />
-
-            <Currencies
-                handleSelectCurrency={handleSelectCurrency}
-                form={form}
+            <CustomModal>
+                <Currencies
+                    handleSelectCurrency={handleSelectCurrency}
+                    form={form}
+                    handlePressBackButton={handleClose}
+                />
+            </CustomModal>
+            <Button
+                label="Show Modal"
+                handlePress={handleOpen}
             />
         </View>
     )

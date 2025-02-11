@@ -2,7 +2,7 @@ import { View } from "react-native"
 import styles from "./CurrenciesSkeleton.styles"
 import Skeleton from "@/components/Skeleton"
 
-const SKELETONS_QUANTITY = 5
+const SKELETONS_QUANTITY = 4
 
 const CurrenciesSkeleton = () => {
     const skeletonArray = Array.from({ length: SKELETONS_QUANTITY })
