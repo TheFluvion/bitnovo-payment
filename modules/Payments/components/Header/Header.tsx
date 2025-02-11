@@ -16,6 +16,7 @@ const Header = ({
 }: Props) => {
     return (
         <View style={styles.container}>
+            <View style={styles.bottomLine} />
             {
                 showBackButton
                     ? <TouchableOpacity
@@ -27,14 +28,16 @@ const Header = ({
                             style={styles.image}
                         />
                     </TouchableOpacity>
-                    : <View style={styles.leftComponent} />
+                    : <View style={styles.sideContent} />
             }
             <Text style={styles.title}>
                 {title}
             </Text>
-            <View>
-                {rightComponent}
-            </View>
+            {
+                rightComponent
+                    ? rightComponent
+                    : <View style={styles.sideContent} />
+            }
         </View>
     );
 }

@@ -1,19 +1,26 @@
-import { Tabs } from 'expo-router';
+import { Stack } from 'expo-router';
 
 const PaymentsLayout = () => {
     return (
-        <Tabs
+        <Stack
             screenOptions={{
                 headerShown: false,
             }}>
-            <Tabs.Screen
+            <Stack.Screen
                 name="index"
                 options={{
+                    headerShown: false,
                     title: 'Payments',
-                    tabBarStyle: { display: 'none' },
                 }}
             />
-        </Tabs>
+            <Stack.Screen
+                name="payment_request"
+                options={{
+                    headerShown: false,
+                    title: 'Payment Request',
+                }}
+            />
+        </Stack>
     );
 }
 

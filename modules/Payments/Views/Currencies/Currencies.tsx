@@ -1,6 +1,6 @@
 import { ImageSourcePropType, Text, View } from "react-native"
 import useCurrencies from "../../hooks/useCurrencies"
-import { ComponentsProps, CurrencyType } from "../../constants/types"
+import { ViewsProps, CurrencyType } from "../../constants/types"
 import OptionItem from "../../components/OptionItem"
 import styles from "./Currencies.styles"
 import CurrenciesSkeleton from "../../components/CurrenciesSkeleton"
@@ -16,10 +16,11 @@ const MOCKED_IMAGE_REQUIRED: Record<CurrencyType, ImageSourcePropType> = {
 const Currencies = ({
     handleSelectCurrency,
     form,
-    handlePressBackButton,
-}: ComponentsProps) => {
-    const { currencies, isLoading } = useCurrencies({
-        handleSelectCurrency
+    handleClose,
+}: ViewsProps) => {
+    const { currencies, isLoading, handleChangeCurrency } = useCurrencies({
+        handleSelectCurrency,
+        handleClose
     })
 
     if (isLoading) return <CurrenciesSkeleton />
@@ -29,12 +30,12 @@ const Currencies = ({
             <Header
                 showBackButton
                 title="Selecciona una divisa"
-                handleBackButton={handlePressBackButton}
+                handleBackButton={handleClose}
             />
             {currencies.map((singleCurrency) => (
                 <OptionItem
                     key={singleCurrency.currency}
-                    handlePress={() => handleSelectCurrency(singleCurrency)}
+                    handlePress={() => handleChangeCurrency(singleCurrency)}
                     selected={form.selected_currency.currency === singleCurrency.currency}
                     name={singleCurrency.name}
                     label={singleCurrency.currency}

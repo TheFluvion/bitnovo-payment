@@ -1,32 +1,34 @@
-import { View } from "react-native"
+import { Modal, View } from "react-native"
 import usePaymentsController from "./usePaymentsController"
 import createStyleSheet from "@/utils/CreateStyleSheet"
 import { COLORS } from "@/constants/Theme/Theme"
 import Currencies from "./Views/Currencies"
 import Button from "@/components/Button"
+import PaymentEntry from "./Views/PaymentEntry"
 
 const Payments = () => {
     const {
         form,
+        isOpen,
+        handleChangeFrom,
         handleSelectCurrency,
-        CustomModal,
         handleClose,
-        handleOpen
+        handleOpen,
+        handleContinue,
     } = usePaymentsController()
 
     return (
         <View style={styles.container}>
-            <CustomModal>
-                <Currencies
-                    handleSelectCurrency={handleSelectCurrency}
-                    form={form}
-                    handlePressBackButton={handleClose}
-                />
-            </CustomModal>
-            <Button
-                label="Show Modal"
-                handlePress={handleOpen}
+            <PaymentEntry
+                form={form}
+                handlePressBackButton={handleOpen}
+                handleSelectCurrency={handleSelectCurrency}
+                handleChangeFrom={handleChangeFrom}
+                handleClose={handleClose}
+                isOpen={isOpen}
+                handleContinue={handleContinue}
             />
+
         </View>
     )
 }
@@ -37,6 +39,7 @@ const styles = createStyleSheet({
         padding: 16,
         backgroundColor: COLORS.white,
         alignItems: "center",
+        justifyContent: "center",
     },
 })
 

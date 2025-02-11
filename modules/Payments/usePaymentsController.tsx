@@ -1,15 +1,12 @@
-import useStepNavigation from "@/hooks/useStepNavigation";
 import { useState } from "react";
 import { Currencies, Form, FormKeys, INITIAL_FORM } from "./constants/types";
 import useModal from "@/hooks/useModal";
+import { useRouter } from "expo-router";
 
 const usePaymentsController = () => {
+    const router = useRouter()
     const [form, setForm] = useState<Form>(INITIAL_FORM);
-    const [currencies, setCurrencies] = useState<Currencies[]>([])
-    const { currentStep, goBack, goFinalStep, goToNextStep, handleCurrentStep } = useStepNavigation({
-        flowSteps: ["step1", "step2", "step3"]
-    })
-    const { CustomModal, handleClose, handleOpen } = useModal()
+    const { handleClose, handleOpen, isOpen } = useModal()
 
     const handleChangeFrom = (key: FormKeys, value: number | string | Currencies) => {
         setForm({
@@ -25,14 +22,24 @@ const usePaymentsController = () => {
         })
     }
 
+    const handleContinue = () => {
+        router.push({
+            pathname: '/(payments)/payment_request',
+            params: {
+                amount: form.amount,
+                description: form.description,
+            },
+        });
+    }
+
     return {
         form,
-        currencies,
+        isOpen,
         handleSelectCurrency,
         handleChangeFrom,
-        CustomModal,
         handleClose,
         handleOpen,
+        handleContinue,
     }
 }
 

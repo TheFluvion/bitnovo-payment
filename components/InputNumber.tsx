@@ -10,17 +10,20 @@ type Placeholder = {
 interface Props extends TextInputProps {
     currency?: string
     customPlaceholder?: Placeholder
+    handleChange: (value: string) => void
 }
 
 const InputNumber = ({
     currency,
     customPlaceholder,
+    handleChange,
     ...props
 }: Props) => {
     return (
         <View style={styles.container}>
             <TextInput
                 {...props}
+                onChangeText={handleChange}
                 style={[styles.input, props.value === '0' && styles.zero_value]}
                 keyboardType="numeric"
                 placeholder={customPlaceholder?.text}

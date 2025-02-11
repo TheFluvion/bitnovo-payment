@@ -6,10 +6,12 @@ import PaymentServices from "@/services/PaymentServices";
 
 interface Props {
     handleSelectCurrency: (currency: Currencies) => void;
+    handleClose: () => void;
 }
 
 const useCurrencies = ({
-    handleSelectCurrency
+    handleSelectCurrency,
+    handleClose
 }: Props) => {
     const [currencies, setCurrencies] = useState<Currencies[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -18,12 +20,17 @@ const useCurrencies = ({
         const { data } = await PaymentServices.getCurrencies()
 
         if (!!data?.length) {
-            setCurrencies(data || [])
-            handleSelectCurrency(data[1])
+            setCurrencies(data)
+            handleSelectCurrency(data[0])
         } else {
             Alert.alert("Error", "Something went wrong")
         }
         setTimeout(() => setIsLoading(false), 3000)
+    }
+
+    const handleChangeCurrency = (currency: Currencies) => {
+        handleSelectCurrency(currency)
+        handleClose()
     }
 
     useEffect(() => {
@@ -33,6 +40,7 @@ const useCurrencies = ({
     return {
         currencies,
         isLoading,
+        handleChangeCurrency
     };
 }
 

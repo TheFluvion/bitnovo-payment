@@ -14,7 +14,7 @@ export default function HomeScreen() {
         <Text style={styles.title}>WELCOME!</Text>
         <HelloWave />
       </View>
-      <Button label="Generar pago" handlePress={() => router.push('/(payments)')} />
+      <Button title="Generar pago" handlePress={() => router.push('/(payments)')} />
     </View>
   );
 }

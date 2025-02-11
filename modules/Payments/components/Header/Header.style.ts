@@ -1,5 +1,8 @@
 import { COLORS, SIZE } from "@/constants/Theme/Theme";
 import createStyleSheet from "@/utils/CreateStyleSheet";
+import { Dimensions } from "react-native";
+
+const { width } = Dimensions.get("window");
 
 const styles = createStyleSheet({
     container: {
@@ -10,10 +13,16 @@ const styles = createStyleSheet({
         justifyContent: "space-between",
         alignItems: "center",
         backgroundColor: COLORS.white,
-        borderBottomColor: COLORS.border_color,
-        borderBottomWidth: 1,
     },
-    leftComponent: {
+    bottomLine: {
+        position: "absolute",
+        bottom: 0,
+        left: -16,
+        width: width,
+        height: 1,
+        backgroundColor: COLORS.border_color,
+    },
+    sideContent: {
         width: 24,
         height: 24,
     },

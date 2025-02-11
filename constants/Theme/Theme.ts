@@ -7,6 +7,7 @@ export const COLORS = {
     primary: '#035AC5',
     enable_button: '#035AC5',
     disabled_button: '#EAF3FF',
+    disabled_button_text: '#71B0FD',
     font_color: '#002859',
     disabled_text_color: '#C0CCDA',
     enabled_text_color: '#035AC5',

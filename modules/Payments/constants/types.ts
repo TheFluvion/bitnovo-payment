@@ -17,26 +17,30 @@ type FormKeys = "selected_currency" | "amount" | "description";
 
 interface Form {
     selected_currency: Currencies;
-    amount: number;
+    amount: string;
     description: string;
 }
 
-interface ComponentsProps {
+interface ViewsProps {
     handleSelectCurrency: (currency: Currencies) => void;
     form: Form;
     handlePressBackButton?: () => void;
+    handleChangeFrom: (key: FormKeys, value: number | string | Currencies) => void;
+    isOpen: boolean;
+    handleClose: () => void;
+    handleContinue: () => void;
 }
 
 const INITIAL_FORM: Form = {
     selected_currency: {
-        symbol: "",
+        symbol: "$",
         name: "",
         image: "",
         currency: CURRENCY.USD,
     },
-    amount: 0,
+    amount: "",
     description: "",
 }
 
 
-export { Currencies, Form, FormKeys, ComponentsProps, CurrencyType, INITIAL_FORM, CURRENCY }
+export { Currencies, Form, FormKeys, ViewsProps, CurrencyType, INITIAL_FORM, CURRENCY }

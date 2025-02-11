@@ -32,7 +32,7 @@ const PaymentServices = {
                     data: MOCKED_CURRENCIES,
                     status: 200
                 });
-            }, 2000);
+            }, 1500);
         });
     },
 }
