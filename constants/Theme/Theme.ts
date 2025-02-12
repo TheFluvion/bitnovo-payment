@@ -3,7 +3,7 @@
  * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
  */
 
-export const COLORS = {
+const COLORS = {
     primary: '#035AC5',
     enable_button: '#035AC5',
     disabled_button: '#EAF3FF',
@@ -19,7 +19,7 @@ export const COLORS = {
     transparent: 'transparent',
 };
 
-export const SIZE = {
+const SIZE = {
     money: 40,
     title: 26,
     subtitle: 18,
@@ -27,13 +27,15 @@ export const SIZE = {
     span: 12,
 }
 
-export const WEIGHT = {
+const WEIGHT = {
     bold: 'bold',
     semi_bold: '600',
     medium: '500',
     regular: '400',
 }
 
-export const FONT = {
+const FONT = {
     mulish: 'Mulish',
 }
+
+export { COLORS, SIZE, WEIGHT, FONT };

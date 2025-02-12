@@ -1,22 +1,25 @@
 import { COLORS, SIZE } from "@/constants/Theme/Theme";
 import createStyleSheet from "@/utils/CreateStyleSheet";
-import { Image, Text, TextInput, View, TextInputProps, NativeSyntheticEvent, TextInputChangeEventData } from "react-native";
+import { Image, Text, TextInput, View, TextInputProps, NativeSyntheticEvent, TextInputChangeEventData, ViewStyle } from "react-native";
 
 interface Props extends TextInputProps {
     showIcon?: boolean;
     label?: string;
     handleChange: (value: string) => void;
+    containerStyle?: ViewStyle
 }
 
 const InputText = ({
     onChangeText,
+    handleChange,
     showIcon = false,
     label,
-    handleChange,
+    style,
+    containerStyle,
     ...props
 }: Props) => {
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, containerStyle]}>
             <Text style={styles.label}>
                 {label}
             </Text>
@@ -27,7 +30,7 @@ const InputText = ({
             <TextInput
                 {...props}
                 onChangeText={handleChange}
-                style={[styles.input, showIcon && styles.inputWithIcon]}
+                style={[styles.input, showIcon && styles.inputWithIcon, style]}
             />
             {
                 props.maxLength && (

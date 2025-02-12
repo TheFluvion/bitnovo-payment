@@ -17,6 +17,7 @@ const OptionItem = ({
     handlePress,
 }: Props) => {
     const tick = selected ? require("@/assets/images/icon-tick-circle.png") : require("@/assets/images/icon-arrow-right.png")
+    const sliceName = name.slice(0, 25) + '...'
 
     return (
         <TouchableOpacity
@@ -31,7 +32,7 @@ const OptionItem = ({
             />
             <View>
                 <Text style={styles.name}>
-                    {name}
+                    {name.length > 25 ? sliceName : name}
                 </Text>
                 <Text style={styles.symbol}>
                     {label}

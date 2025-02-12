@@ -38,6 +38,7 @@ const PaymentEntry = ({
                 transparent={false}
             >
                 <OptionItemList
+                    title="Selecciona una divisa"
                     handleBackButton={handleClose}
                     handleSelectOption={handleChangeCurrency}
                     handleSearchChange={handleChangeSearchQuery}

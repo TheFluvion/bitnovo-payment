@@ -22,6 +22,7 @@ interface Props {
     selectedOptionId: string;
     mockedImageRequired: MockedImageRequired;
     isLoading: boolean;
+    title: string;
 }
 
 const OptionItemList = ({
@@ -32,13 +33,14 @@ const OptionItemList = ({
     selectedOptionId,
     mockedImageRequired,
     isLoading,
+    title,
 }: Props) => {
     if (isLoading) return <OptionItemListSkeleton />
 
     return (
         <View style={styles.container}>
             <Header
-                title="Selecciona una divisa"
+                title={title}
                 handleBackButton={handleBackButton}
                 showBackButton
                 hideBottomLine
