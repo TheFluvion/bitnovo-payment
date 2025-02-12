@@ -10,10 +10,10 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    npm install
    ```
 
-2. Start the app
+2. Start the app or build app
 
    ```bash
-    npx expo start
+    npx run android/ios
    ```
 
 In the output, you'll find options to open the app in a
