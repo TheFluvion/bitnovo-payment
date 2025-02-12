@@ -1,4 +1,4 @@
-package com.vixon.bitnovopayment
+package com.bitnovopayment
 
 import android.app.Application
 import android.content.res.Configuration

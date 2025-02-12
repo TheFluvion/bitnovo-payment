@@ -20,6 +20,13 @@ const PaymentsLayout = () => {
                     title: 'Payment Request',
                 }}
             />
+            <Stack.Screen
+                name="success_payment"
+                options={{
+                    headerShown: false,
+                    title: 'Payment Request',
+                }}
+            />
         </Stack>
     );
 }

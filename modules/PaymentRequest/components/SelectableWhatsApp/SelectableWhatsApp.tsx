@@ -1,4 +1,4 @@
-import { Image, Linking, Text, Touchable, TouchableHighlight, View } from "react-native"
+import { Alert, Image, Linking, Text, Touchable, TouchableHighlight, View } from "react-native"
 import styles from "./SelectableWhatsApp.styles"
 import Button from "@/components/Button";
 import InputText from "@/components/InputText";
@@ -21,7 +21,7 @@ const SelectableWhatsApp = ({
     }
 
     const handleSubmit = () => {
-        Linking.openURL(`${WHATSAPP_BASE_URL}${phone}`)
+        Linking.openURL(`${WHATSAPP_BASE_URL}${phone}`).catch(err => Alert.alert("Error", "No se pudo abrir WhatsApp"))
     }
 
     return (
@@ -50,7 +50,7 @@ const SelectableWhatsApp = ({
             <Button
                 title="Enviar"
                 onPress={handleSubmit}
-                disabled={!phone}
+                customStyle={styles.button}
             />
         </View>
     )

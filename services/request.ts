@@ -1,18 +1,20 @@
-import { Method, ResponseData } from '@/types/request';
+import { RequestParams, ResponseData } from '@/types/request';
 import { AXIOS_REQUEST_METHOD, METHOD } from '@/constants/services';
 import { AxiosError, AxiosRequestConfig } from 'axios';
 
-const request = async <T = object>(url: string, options: AxiosRequestConfig & { method?: Method }): Promise<ResponseData<T>> => {
+const request = async <T = object>(
+    url: string,
+    params: RequestParams = {},
+): Promise<ResponseData<T>> => {
     try {
-        const method: Method = options.method || METHOD.GET;
+        const method = params.method || METHOD.GET;
+        const body = params.body || null;
 
-        const response = await AXIOS_REQUEST_METHOD[method](url,
+        const response = await AXIOS_REQUEST_METHOD[method](url, body,
             {
-                ...options,
                 headers: {
                     'Content-Type': 'application/json',
                     'X-Device-Id': '564ab831-18a6-4cb3-adfa-4f62d9e9e97a',
-                    ...options.headers
                 }
             }
         );
@@ -21,6 +23,7 @@ const request = async <T = object>(url: string, options: AxiosRequestConfig & { 
         return { data, status };
     } catch (error) {
         const axiosError = error as AxiosError;
+        console.error(axiosError);
 
         return {
             data: null,

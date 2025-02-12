@@ -17,11 +17,6 @@ const styles = createStyleSheet({
         marginTop: 50,
         gap: 50,
     },
-    button: {
-        position: "absolute",
-        bottom: 0,
-        width: "100%",
-    }
 })
 
 export default styles;

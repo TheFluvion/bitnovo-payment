@@ -5,6 +5,7 @@ const styles = createStyleSheet({
     container: {
         width: "100%",
         height: 56,
+        flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
         gap: 12,
@@ -22,6 +23,9 @@ const styles = createStyleSheet({
         paddingHorizontal: 16,
         paddingVertical: 18,
         gap: 12
+    },
+    touchableRight: {
+        flex: 1,
     },
     touchableSelected: {
         borderColor: COLORS.primary,

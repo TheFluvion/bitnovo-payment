@@ -6,12 +6,12 @@ import PaymentRequestCard from "./components/PaymentRequestCard";
 import SelectableAction from "@/components/SelectableAction";
 
 const PaymentRequest = () => {
-    const { arraySelectableAction, selectedOption, CustomModal } = usePaymentRequestController()
+    const { arraySelectableAction, selectedOption, params, OptionItemListModal } = usePaymentRequestController()
 
     return (
         <View style={styles.container}>
-            <CustomModal />
-            <PaymentRequestCard amount={100} currency="USD" />
+            <OptionItemListModal />
+            <PaymentRequestCard amount={params.amount} currency={params.currency} />
             {
                 arraySelectableAction.map((action, index) => (
                     <SelectableAction
@@ -22,6 +22,7 @@ const PaymentRequest = () => {
                         selected={selectedOption.index === index}
                         OptionalChildren={selectedOption.index === index ? action.OptionalComponent : undefined}
                         showOptionalComponent={selectedOption.index === index && !!action.OptionalComponent}
+                        rightComponent={action.rightComponent}
                     />
                 ))
             }

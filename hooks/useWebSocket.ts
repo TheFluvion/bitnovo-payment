@@ -4,6 +4,7 @@ const useWebSocket = (url: string) => {
     const socketRef = useRef<WebSocket | null>(null);
     const [messages, setMessages] = useState<string[]>([]);
     const [isConnected, setIsConnected] = useState(false);
+    const [disconnected, setDisconnected] = useState(false);
 
     useEffect(() => {
         connectWebSocket();
@@ -22,11 +23,13 @@ const useWebSocket = (url: string) => {
         };
 
         socketRef.current.onmessage = (event) => {
+            console.log("📩 Nuevo mensaje:", event.data);
             setMessages((prevMessages) => [...prevMessages, event.data]);
         };
 
         socketRef.current.onerror = (error) => {
             console.error("❌ WebSocket error:", error);
+            setDisconnected(true);
         };
 
         socketRef.current.onclose = () => {
@@ -44,7 +47,7 @@ const useWebSocket = (url: string) => {
         }
     };
 
-    return { isConnected, messages, sendMessage };
+    return { isConnected, messages, disconnected, sendMessage };
 };
 
 export default useWebSocket;

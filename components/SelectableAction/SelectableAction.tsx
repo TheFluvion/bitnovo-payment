@@ -27,7 +27,7 @@ const SelectableAction = ({
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={onHandlePress} style={[styles.touchable, selected && styles.touchableSelected]}>
+            <TouchableOpacity onPress={onHandlePress} style={[styles.touchable, selected && styles.touchableSelected, rightComponent && styles.touchableRight]}>
                 <Image
                     source={image}
                     style={styles.image}

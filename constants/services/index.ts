@@ -3,6 +3,8 @@ import axios from "axios";
 
 const BASE_URL = 'https://payments.pre-bnvo.com/api/v1';
 const WHATSAPP_BASE_URL = 'whatsapp://send?phone=';
+const MAIL_BASE_URL = 'mailto:';
+const WEBSOCKET_URL = 'wss://payments.pre-bnvo.com/ws/merchant/';
 
 const HTTP_STATUS: Record<string, number> = {
     OK: 200,
@@ -33,4 +35,4 @@ const AXIOS_REQUEST_METHOD: Record<Method, AxiosRequest> = {
     DELETE: axios.delete
 }
 
-export { BASE_URL, WHATSAPP_BASE_URL, HTTP_STATUS, METHOD, AXIOS_REQUEST_METHOD }
+export { BASE_URL, WHATSAPP_BASE_URL, HTTP_STATUS, METHOD, AXIOS_REQUEST_METHOD, MAIL_BASE_URL, WEBSOCKET_URL, }

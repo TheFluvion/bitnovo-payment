@@ -1,4 +1,4 @@
-import { ImageSourcePropType, Modal, View } from "react-native";
+import { ActivityIndicator, ImageSourcePropType, Modal, View } from "react-native";
 import styles from "./PaymentEntry.style";
 import Header from "../../../../components/Header";
 import CurrencySelect from "../../components/CurrencySelect";
@@ -23,7 +23,6 @@ const PaymentEntry = ({
     handleSelectCurrency,
     isOpen,
     handleClose,
-    handleContinue,
 }: ViewsProps) => {
     const { filterCurrencies, isLoading, handleChangeCurrency, handleChangeSearchQuery } = useCurrencies({
         handleSelectCurrency,
@@ -72,14 +71,9 @@ const PaymentEntry = ({
                     handleChange={(value) => handleChangeFrom('description', value)}
                     placeholder="Añade descripción del pago"
                     label="Concepto"
+                    maxLength={140}
                 />
             </View>
-            <Button
-                title="Continuar"
-                handlePress={handleContinue}
-                customStyle={styles.button}
-                disabled={!form.amount}
-            />
         </View>
     );
 }

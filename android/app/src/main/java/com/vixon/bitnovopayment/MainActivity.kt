@@ -1,4 +1,4 @@
-package com.vixon.bitnovopayment
+package com.bitnovopayment
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build

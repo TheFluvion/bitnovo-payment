@@ -7,16 +7,9 @@ import Button from '@/components/Button';
 
 export default function HomeScreen() {
   const router = useRouter();
+
   const handleCreatePayment = () => {
     router.push('/(payments)')
-    /*  router.push({
-       pathname: '/(payments)/payment_request',
-       params: {
-         amount: 123,
-         description: 'daweasdasdasd',
-         currency: 'USD',
-       },
-     }); */
   }
 
   return (

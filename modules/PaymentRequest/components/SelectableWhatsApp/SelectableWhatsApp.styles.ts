@@ -3,7 +3,7 @@ import createStyleSheet from "@/utils/CreateStyleSheet";
 
 const styles = createStyleSheet({
     container: {
-        width: '100%',
+        width: '90%',
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
@@ -40,7 +40,14 @@ const styles = createStyleSheet({
         height: 30,
     },
     containerStyle: {
-        width: '50%'
+        width: '60%'
+    },
+    button: {
+        width: 53,
+        height: 24,
+        paddingVertical: 0,
+        paddingHorizontal: 0,
+        zIndex: 10,
     }
 })
 

@@ -6,6 +6,7 @@ interface SelectableActionType {
     label: string;
     handlePress: () => void;
     OptionalComponent?: JSX.Element;
+    rightComponent?: React.ReactNode;
 }
 
 const MOCKED_IMAGE_REQUIRED: Record<string, ImageSourcePropType> = {

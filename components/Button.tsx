@@ -1,17 +1,19 @@
 import { COLORS, SIZE } from "@/constants/Theme/Theme"
 import createStyleSheet from "@/utils/CreateStyleSheet"
-import { ButtonProps, Text, TouchableOpacity, ViewStyle } from "react-native"
+import { ButtonProps, Image, ImageSourcePropType, Text, TouchableOpacity, ViewStyle } from "react-native"
 
 interface Props extends ButtonProps {
     disabled?: boolean
     handlePress?: () => void
     customStyle?: ViewStyle
+    image?: ImageSourcePropType
 }
 
 const Button = ({
     disabled,
     customStyle,
     handlePress,
+    image,
     ...props
 }: Props) => {
     return (
@@ -21,11 +23,17 @@ const Button = ({
             onPress={handlePress}
             disabled={disabled}
         >
-            <Text
-                style={[styles.label, disabled && styles.labelDisabled]}
-            >
-                {props.title}
-            </Text>
+            {
+                image ? <Image
+                    source={image}
+                    style={styles.image}
+                />
+                    : <Text
+                        style={[styles.label, disabled && styles.labelDisabled]}
+                    >
+                        {props.title}
+                    </Text>
+            }
         </TouchableOpacity>
     )
 }
@@ -49,8 +57,12 @@ const styles = createStyleSheet({
         fontWeight: '600',
     },
     labelDisabled: {
-        color: COLORS.disabled_button_text,
+        color: COLORS.font_color,
     },
+    image: {
+        width: '100%',
+        height: '100%',
+    }
 })
 
 export default Button

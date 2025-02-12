@@ -1,13 +1,15 @@
-import { View } from "react-native"
+import { ActivityIndicator, View } from "react-native"
 import usePaymentsController from "./usePaymentsController"
 import createStyleSheet from "@/utils/CreateStyleSheet"
 import { COLORS } from "@/constants/Theme/Theme"
 import PaymentEntry from "./Views/PaymentEntry"
+import Button from "@/components/Button"
 
 const Payments = () => {
     const {
         form,
         isOpen,
+        isLoading,
         handleChangeFrom,
         handleSelectCurrency,
         handleClose,
@@ -26,7 +28,16 @@ const Payments = () => {
                 isOpen={isOpen}
                 handleContinue={handleContinue}
             />
-
+            {
+                isLoading
+                    ? <ActivityIndicator style={styles.button} size="large" color={COLORS.primary} />
+                    : <Button
+                        title="Continuar"
+                        handlePress={handleContinue}
+                        customStyle={styles.button}
+                        disabled={!form.amount}
+                    />
+            }
         </View>
     )
 }
@@ -38,7 +49,13 @@ const styles = createStyleSheet({
         backgroundColor: COLORS.white,
         alignItems: "center",
         justifyContent: "center",
+        position: "relative",
     },
+    button: {
+        position: "absolute",
+        bottom: 16,
+        width: "100%",
+    }
 })
 
 export default Payments

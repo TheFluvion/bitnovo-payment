@@ -2,6 +2,7 @@ import { Currencies } from "@/modules/Payments/constants/types";
 import request from "./request";
 import { BASE_URL } from "@/constants/services";
 import { OptionItemType } from "@/components/OptionItemList/OptionItemList";
+import { create } from "react-test-renderer";
 
 const MOCKED_CURRENCIES: Currencies[] = [
     {
@@ -36,6 +37,26 @@ const COUNTRIES: OptionItemType[] = [
     { symbol: "+504", name: "Honduras", image: require("@assets/images/icon-honduras.png"), id: "+504" },
 ];
 
+interface CreateOrderParams {
+    expected_output_amount: number;
+    fiat: string;
+}
+
+interface CreateOrderResponse {
+    identifier: string;
+    reference: string;
+    payment_uri: string;
+    web_url: string;
+    address: string;
+    tag_memo: string;
+    input_currency: string;
+    expected_input_amount: number;
+    rate: number;
+    notes: string;
+    fiat: string;
+    language: string;
+}
+
 const PaymentServices = {
     //mocked service to simulate a request
     getCurrencies: async (): Promise<{ data: Currencies[]; status: number }> => {
@@ -45,9 +66,10 @@ const PaymentServices = {
                     data: MOCKED_CURRENCIES,
                     status: 200
                 });
-            }, 1500);
+            }, 1000);
         });
     },
+    //mocked service to simulate a request
     getCountries: async (): Promise<{ data: OptionItemType[]; status: number }> => {
         return new Promise((resolve) => {
             setTimeout(() => {
@@ -55,9 +77,16 @@ const PaymentServices = {
                     data: COUNTRIES,
                     status: 200
                 });
-            }, 1500);
+            }, 1000);
         });
-    }
+    },
+    createOrder: async (params: CreateOrderParams) => request<CreateOrderResponse>(
+        `${BASE_URL}/orders/`,
+        {
+            method: "POST",
+            body: JSON.stringify(params),
+        }
+    )
 }
 
 export default PaymentServices
